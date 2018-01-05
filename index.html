@@ -1,0 +1,309 @@
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+<div class="popup">
+  <p class="bump">
+  Choose a Display Name
+  </p>
+  <input id="display"></input>
+
+  </div>
+
+
+
+<div class ="center_div">
+  <div class="fixer_div">
+  <input title="Add an item" href=# class="packed_button input_button" placeholder="+" id="add_button" onfocus="this.placeholder=''" onblur="this.placeholder='+';"></input>
+<a class="packed_button check_button smol" id="check"></a>
+<br class="clearFloat">
+
+</div>
+
+</div>
+  <div class="top-entry">
+</div>
+  <div class="top-entry">
+</div>
+<div class="entry_holder" id="contain">
+  <div class="entry">
+    <p class="entry_text" id="henlo">Tomato0000000000000</p>
+    <p class="entry_text noborder">Keeyan</p>
+    <a class="bookend"></a>
+</div>
+</div>
+
+<style>
+    body{
+  background-color: #222222
+}
+
+.center_div{
+  margin:60px auto;
+  text-align: center;
+  display: block;
+  float: left;
+  position: relative;
+  left: 50%;
+}
+.packed_button:active,.packed_button:visited,.packed_button:focus,.packed_button:link{
+  color:#CCC;
+  text-decoration:none;
+}
+.packed_button:hover:not(:focus){
+  background-color: #444444;
+  text-shadow: 3px 3px 3px #111;
+}
+.packed_button{
+  transition:width .5s, background-color .2s ease-in-out;
+  float:left;
+  display:block;
+  text-align: center;
+  width: 1.8em;
+  background-color: #282828;
+  font-size: 2em;
+  text-shadow: 2px 2px 2px #111;
+  line-height:1.1em;
+}
+
+
+.input_button{
+  height: 45px;
+  margin: 0px auto 0px auto;
+  border: 0px solid;
+
+}
+
+.input_button:focus{
+  width:250px;
+  outline:none;
+  border-color: #CCC;
+  font-size: 24px;
+  background-color:#555555;
+}
+.check_button{
+  height: 45px;
+  margin: 0 auto;
+  border: 0px solid;
+  display: block;
+  background-color: #888888;
+}
+
+.check_button:focus{
+  width:220px;
+  outline:none;
+  border-color: #CCC;
+  font-size: 24px;
+  background-color:#555555;
+}
+
+.clearFloat { clear: both; }
+
+.fixer_div {
+   float: left;
+   position: relative;
+   left: -50%;
+}
+
+.smol{
+  width:0px;
+}
+.top-entry{
+  height:75px;
+  width:200px;
+  display:block;
+  border-color:blue;
+}
+.entry{
+  transition:all .4s ease-in-out;
+  height:50px;
+  width:350px;
+  margin:10px auto;
+  display:block;
+  background-color:#1D1D1D;
+  border-left: 2px solid;
+  border-color: orange;
+}
+
+
+
+
+
+.entry:hover{
+  width:450px;
+
+}
+
+
+.entry_text{
+  display:inline-block;
+  font-size: 24px;
+  line-height:1.2em;
+  height:30px;
+  width: 150px;
+  text-overflow: ellipsis;
+  overflow:hidden;
+  margin-left: 5px;
+  margin-top:10px;
+  color: #BBBBBB;
+  border-right:2px solid;
+  text-align: center;
+}
+
+#henlo{
+    transition:all .4s ease-in-out;
+}
+.entry:hover #henlo{
+  min-width: 150px;
+  width: 400px;
+  border: none;
+}
+
+.entry:focus #henlo{
+  min-width: 150px;
+  width: 400px;
+  border: none;
+}
+.entry:hover > .noborder{
+  width: 0px;
+  visibility:hidden;
+}
+
+.bookend{
+  transition:background-color .2s ease-in-out;
+  width: 25px;
+  border:none;
+  height:48px;
+  margin-top:1px;
+  background-color:#772222;
+  display:inline;
+  font-size: 25px;
+  overflow:hidden;
+  float:right;
+}
+.bookend:hover{
+  background-color:#AA2222;
+}
+
+.entry:hover > .bookend{
+}
+.noborder{
+  transition:width .4s ease-in-out;
+  border:none;
+}
+
+
+.popup{
+  display:none;
+  position:fixed;
+  background-color:#999999;
+  border-radius: 25px;
+  width: 300px;
+  height: 150px;
+  top: 50%;
+  left: 50%;
+  text-align:center;
+  margin-top: -75px; /* Negative half of height. */
+  margin-left: -150px; /* Negative half of width. */
+  z-index:2;
+}
+
+.bump{
+  margin-top:15px;
+  font-size:25px;
+  text-shadow:1px 1px 1px #111;
+}
+
+#display{
+  margin-top:10px;
+}
+</style>
+
+<script>
+var data = {
+    "chef knife" : {
+      "author" : "Keeyan",
+      "name" : "Chef Knife"
+    },
+    "eggs" : {
+      "author" : "Antonio",
+      "name" : "Eggs"
+    },
+    "shower" : {
+      "author" : "Keeyan",
+      "name" : "Shower"
+    }
+};
+
+$('#add_button').keyup(function(event){
+    if(event.keyCode==13){
+    var a=event.target.value;
+    add_item(a);
+    event.target.value="";
+    //event.target.blur();
+  }
+});
+Object.entries(data).forEach(function(keys,value){
+  var author, item;
+  for (var key in keys[1]) {
+  if (keys[1].hasOwnProperty(key)) {
+    if(key=="name"){
+      item=keys[1][key];
+      console.log(item,author)
+      add_item(item,author);
+    }else{
+      author=keys[1][key]
+    }
+  }
+}
+}
+);
+function add_item(item_name, author){
+   var container = document.getElementById("contain");
+  var entry_box = document.createElement("div");
+  $(entry_box).addClass("entry");
+  $(entry_box).addClass(author);
+  var od = (author+item_name).replace(/ /g,'');
+  var od = (od).replace(/'/g,'');
+  var od = (od).replace(/"/g,'');
+  console.log(od);
+  $(entry_box).attr("id",od);
+  var para = document.createElement("P");
+  var t = document.createTextNode(item_name);
+  para.appendChild(t);
+  $(para).addClass("entry_text");
+  $(para).attr("id","henlo");
+  var para_a = document.createElement("P");
+  var t = document.createTextNode(author);
+  para_a.appendChild(t);
+  $(para_a).addClass("entry_text");
+  $(para_a).addClass("noborder");
+  var bookend = document.createElement("a");
+  $(bookend).addClass("bookend");
+  $(bookend).on("click",function(){
+    $("#"+od).remove();
+    console.log("delete" + item_name)
+  });
+  entry_box.appendChild(para);
+  entry_box.appendChild(para_a);
+  entry_box.appendChild(bookend);
+  container.appendChild(entry_box);
+
+}
+
+$("#add_button").on("focus",function(){
+  $("#check").removeClass("smol");
+});
+
+$("#add_button").on("blur",function(){
+  $("#check").addClass("smol");
+});
+
+
+$('#display').keyup(function(event){
+    if(event.keyCode==13){
+    var a=event.target.value;
+    //this is where you should add display name to user
+  }
+});
+</script>
