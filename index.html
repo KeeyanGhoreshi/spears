@@ -1,125 +1,36 @@
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <!-- D3 -->
+    <script type="text/javascript" src="assets/js/d3.v3.js"></script>
+      <link rel="stylesheet" href = "assets/css/main.css">
 
 
-<div class="popup">
-  <p class="bump">
-  Choose a Display Name
-  </p>
-  <input id="display"></input>
+    <title>Hello, world!</title>
+  </head>
 
-  </div>
+  <body onkeydown='getKeyAndMove(event)'>
+    <h1>Hello, world!</h1>
+      <p id="demo"></p>
 
+      <div id = "container">
 
-
-<div class ="center_div">
-  <div class="fixer_div">
-  <input title="Add an item" href=# class="packed_button input_button" placeholder="+" id="add_button" onfocus="this.placeholder=''" onblur="this.placeholder='+';"></input>
-<a class="packed_button check_button smol" id="check"></a>
-<br class="clearFloat">
-
-</div>
-
-</div>
-  <div class="top-entry">
-</div>
-  <div class="top-entry">
-</div>
-<div class="entry_holder" id="contain">
-  <div class="entry">
-    <p class="entry_text" id="henlo">Tomato0000000000000</p>
-    <p class="entry_text noborder">Keeyan</p>
-    <a class="bookend"></a>
-</div>
-</div>
+      </div>
+          <script src="assets/js/data.js"></script>
 
 
-
-<script>
-var data = {
-    "chef knife" : {
-      "author" : "Keeyan",
-      "name" : "Chef Knife"
-    },
-    "eggs" : {
-      "author" : "Antonio",
-      "name" : "Eggs"
-    },
-    "shower" : {
-      "author" : "Keeyan",
-      "name" : "Shower"
-    }
-};
-
-$('#add_button').keyup(function(event){
-    if(event.keyCode==13){
-    var a=event.target.value;
-    add_item(a);
-    event.target.value="";
-    //event.target.blur();
-  }
-});
-Object.entries(data).forEach(function(keys,value){
-  var author, item;
-  for (var key in keys[1]) {
-  if (keys[1].hasOwnProperty(key)) {
-    if(key=="name"){
-      item=keys[1][key];
-      console.log(item,author)
-      add_item(item,author);
-    }else{
-      author=keys[1][key]
-    }
-  }
-}
-}
-);
-function add_item(item_name, author){
-   var container = document.getElementById("contain");
-  var entry_box = document.createElement("div");
-  $(entry_box).addClass("entry");
-  $(entry_box).addClass(author);
-  var od = (author+item_name).replace(/ /g,'');
-  var od = (od).replace(/'/g,'');
-  var od = (od).replace(/"/g,'');
-  console.log(od);
-  $(entry_box).attr("id",od);
-  var para = document.createElement("P");
-  var t = document.createTextNode(item_name);
-  para.appendChild(t);
-  $(para).addClass("entry_text");
-  $(para).attr("id","henlo");
-  var para_a = document.createElement("P");
-  var t = document.createTextNode(author);
-  para_a.appendChild(t);
-  $(para_a).addClass("entry_text");
-  $(para_a).addClass("noborder");
-  var bookend = document.createElement("a");
-  $(bookend).addClass("bookend");
-  $(bookend).on("click",function(){
-    $("#"+od).remove();
-    console.log("delete" + item_name)
-  });
-  entry_box.appendChild(para);
-  entry_box.appendChild(para_a);
-  entry_box.appendChild(bookend);
-  container.appendChild(entry_box);
-
-}
-
-$("#add_button").on("focus",function(){
-  $("#check").removeClass("smol");
-});
-
-$("#add_button").on("blur",function(){
-  $("#check").addClass("smol");
-});
-
-
-$('#display').keyup(function(event){
-    if(event.keyCode==13){
-    var a=event.target.value;
-    //this is where you should add display name to user
-  }
-});
-</script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  </body>
+</html>
