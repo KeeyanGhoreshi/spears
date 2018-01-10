@@ -1,0 +1,20 @@
+.hbar{
+    stroke: #D11;
+
+
+}
+
+.depleted_h{
+    stroke: #003;
+}
+
+.tri_in{
+    fill: black;
+}
+
+rect {
+  fill: none;
+  pointer-events: all;
+    stroke: #F00;
+    stroke-width: 2;
+}
