@@ -163,11 +163,13 @@ function henlo() {
         if(a){
             incoming_projectile[0][i].remove();
             alsobeep()
+            document.getElementById("score").innerHTML = parseInt(document.getElementById("score").innerHTML)+1;
     }
         a=intersectRect(incoming_projectile[0][i],blocker2);
         if(a){
             incoming_projectile[0][i].remove();
             alsobeep()
+            document.getElementById("score").innerHTML = parseInt(document.getElementById("score").innerHTML)+1;
     }
         a=intersectRect(incoming_projectile[0][i],ship);
         if(a){
